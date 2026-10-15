@@ -4,96 +4,91 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>HEAR Lab — Human-centered Embodied Agent Interaction Lab</title>
-<meta name="description" content="HEAR Lab (人本具身交互实验室), Shien-Ming Wu School of Intelligent Engineering, South China University of Technology, Guangzhou International Campus. Opening 2027.">
-<!-- 网站图标：和页面上的 logo 相同（三段弧线组成的闭环，两段蓝、一段琥珀） -->
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke-width='9' stroke-linecap='round' transform='rotate(-90 32 32)'%3E%3Ccircle cx='32' cy='32' r='22' stroke='%231f6f8b' pathLength='360' stroke-dasharray='92 28'/%3E%3Ccircle cx='32' cy='32' r='22' stroke='%23d98a2b' pathLength='360' stroke-dasharray='92 268' stroke-dashoffset='-240'/%3E%3C/g%3E%3C/svg%3E">
+<meta name="description" content="HEAR Lab (人本具身交互实验室), Shien-Ming Wu School of Intelligent Engineering, South China University of Technology. Opening 2027.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none' stroke-width='9' stroke-linecap='round'%3E%3Cpath d='M32 10A22 22 0 0 1 53.996 32.442' stroke='%231f6f8b'/%3E%3Cpath d='M51.053 43A22 22 0 0 1 20.619 50.827' stroke='%231f6f8b'/%3E%3Cpath d='M12.947 43A22 22 0 0 1 21.385 12.73' stroke='%23d98a2b'/%3E%3C/svg%3E">
 <style>
   /* ===== 颜色：改 --accent（主色）和 --accent-2（强调色）即可换整站配色 ===== */
   :root{
-    --bg:#fcfcfb; --bg-2:#ffffff; --fg:#161c22; --muted:#626b76; --line:#e3e6ea; --line-2:#cfd5db;
-    --accent:#1f6f8b; --accent-soft:rgba(31,111,139,.07);
-    --accent-2:#d98a2b; --accent-2-soft:rgba(217,138,43,.12);
-    --max:1080px;
-    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
-    --mono:"SF Mono","JetBrains Mono",Menlo,Consolas,"Liberation Mono",monospace;
+    --bg:#fbfcfd; --bg-2:#ffffff; --fg:#161b22; --muted:#5f6973; --line:#e3e8ee;
+    --accent:#1f6f8b; --accent-soft:#e3f0f5;
+    --accent-2:#d98a2b; --accent-2-soft:#fbf0e0;
+    --card:#ffffff; --shadow:0 1px 2px rgba(16,24,40,.04), 0 8px 24px -12px rgba(16,24,40,.12);
+    --max:1040px;
   }
   @media (prefers-color-scheme: dark){
-    :root{ --bg:#0e1216; --bg-2:#13181d; --fg:#e9edf2; --muted:#9aa5b3; --line:#232b34; --line-2:#334050;
-           --accent:#6cbbd8; --accent-soft:rgba(108,187,216,.09);
-           --accent-2:#e9ad5f; --accent-2-soft:rgba(233,173,95,.16); }
+    :root{ --bg:#0d1117; --bg-2:#10161d; --fg:#e8ecf1; --muted:#9aa5b1; --line:#222a33;
+           --accent:#5fb3d1; --accent-soft:#132a34; --accent-2:#e6a85a; --accent-2-soft:#2d2114;
+           --card:#131a21; --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px -14px rgba(0,0,0,.6); }
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+  body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased}
   a{color:var(--accent);text-decoration:none}
   a:hover{text-decoration:underline}
-  .wrap{max-width:var(--max);margin:0 auto;padding:0 28px}
-  .mono{font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-  @media (prefers-reduced-motion:reduce){ *{transition:none!important} }
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
 
-  /* ===== 顶部 ===== */
-  header{position:sticky;top:0;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:10}
-  nav{display:flex;align-items:center;justify-content:space-between;height:64px}
-  .brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:-.01em;color:var(--fg);font-size:18px}
-  .brand .r{color:var(--accent-2)}
+  /* ===== 顶部导航 ===== */
+  header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+  .brand{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:700;letter-spacing:.01em;color:var(--fg);white-space:nowrap}
   .brand svg{width:28px;height:28px}
-  .brand:hover{text-decoration:none}
-  nav ul{list-style:none;display:flex;gap:2px;margin:0;padding:0}
-  nav li a{color:var(--muted);font-size:14.5px;padding:8px 12px;border-radius:6px;display:inline-block}
+  .brand .r{color:var(--accent-2)}
+  /* 标志：三段圆弧，两段主色 + 一段强调色 */
+  .logo{fill:none;stroke-width:9;stroke-linecap:round}
+  .logo .t{stroke:var(--accent)}
+  .logo .a{stroke:var(--accent-2)}
+  nav ul{list-style:none;display:flex;gap:4px;margin:0;padding:0;overflow-x:auto}
+  nav li a{display:block;padding:6px 10px;border-radius:8px;color:var(--muted);font-size:14.5px;white-space:nowrap}
   nav li a:hover{color:var(--fg);background:var(--accent-soft);text-decoration:none}
-  @media (max-width:680px){ nav ul{display:none} }
 
-  /* ===== 首屏：左侧文字，右侧信息卡 ===== */
-  .hero{padding:84px 0 72px;border-bottom:1px solid var(--line)}
-  .hero .cols{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(340px,1fr);gap:56px;align-items:start}
-  @media (max-width:900px){ .hero .cols{grid-template-columns:1fr;gap:36px} }
-  .marker{width:40px;height:3px;background:var(--accent-2);margin:0 0 22px}
-  .kicker{color:var(--muted);font-weight:500;letter-spacing:.03em;font-size:17px;margin:0 0 14px}
+  /* ===== 首屏 ===== */
+  .hero{position:relative;overflow:hidden;background:var(--bg-2);border-bottom:1px solid var(--line)}
+  .hero::before{content:"";position:absolute;inset:0;background:
+      radial-gradient(900px 420px at 92% -10%, color-mix(in srgb,var(--accent) 14%,transparent), transparent 70%),
+      radial-gradient(600px 300px at 0% 110%, color-mix(in srgb,var(--accent-2) 10%,transparent), transparent 70%);
+      pointer-events:none}
+  .hero .ring{position:absolute;right:-60px;top:50%;transform:translateY(-50%);width:420px;height:420px;opacity:.9;pointer-events:none}
+  .hero .inner{position:relative;padding:88px 0 72px;max-width:740px}
+  .kicker{color:var(--muted);font-weight:500;letter-spacing:.03em;font-size:17px;margin:0 0 16px}
   .kicker .hl{color:var(--accent-2);font-weight:800;font-size:1.15em}
-  .hero h1{font-size:clamp(48px,7.6vw,88px);line-height:.98;margin:0 0 16px;letter-spacing:-.035em;font-weight:800}
-  .hero h1 .r{color:var(--accent-2)}
-  .hero .zh{font-size:clamp(20px,2.8vw,27px);color:var(--fg);opacity:.72;margin:0 0 28px;font-weight:400;letter-spacing:.16em}
-  .hero p.lead{font-size:clamp(17px,1.9vw,19px);line-height:1.62;max-width:620px;margin:0;color:var(--fg)}
+  h1{font-size:clamp(44px,7vw,76px);line-height:1;margin:0 0 12px;letter-spacing:-.025em;font-weight:800}
+  h1 .r{color:var(--accent-2)}
+  .zh{font-size:clamp(20px,3vw,28px);color:var(--muted);margin:0 0 26px;font-weight:500;letter-spacing:.06em}
+  .lead{font-size:18.5px;line-height:1.7;max-width:640px;margin:0 0 28px}
+  .meta{display:flex;flex-wrap:wrap;gap:8px 22px;color:var(--muted);font-size:15px;margin:0 0 30px}
+  .meta span{display:inline-flex;align-items:center;gap:8px}
+  .meta span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  .status{display:inline-flex;align-items:center;gap:10px;padding:10px 16px 10px 12px;border-radius:999px;background:var(--accent-2-soft);color:var(--fg);font-weight:600;border:1px solid color-mix(in srgb,var(--accent-2) 35%,transparent)}
+  .status .dot{width:10px;height:10px;border-radius:50%;background:var(--accent-2);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent-2) 25%,transparent)}
+  .status small{font-weight:400;color:var(--muted)}
+  @media (max-width:820px){ .hero .ring{width:300px;height:300px;right:-110px;top:auto;bottom:-70px;transform:none;opacity:.5} .hero .inner{padding:64px 0 56px} }
 
-  .facts{border:1px solid var(--line);border-radius:12px;background:var(--bg-2);padding:6px 24px 10px;box-shadow:0 1px 2px rgba(16,24,40,.03)}
-  .facts dl{margin:0}
-  .facts .row{display:grid;grid-template-columns:96px 1fr;gap:14px;padding:13px 0;border-bottom:1px solid var(--line)}
-  .facts .row:last-child{border-bottom:0}
-  .facts dt{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:3px}
-  .facts dd{margin:0;font-size:15px;line-height:1.5}
-  .facts dd .zh{color:var(--muted);font-size:13.5px;display:block}
-  .facts .status{display:flex;align-items:flex-start;gap:9px;font-weight:600}
-  .facts .status .dot{width:9px;height:9px;border-radius:50%;background:var(--accent-2);box-shadow:0 0 0 4px var(--accent-2-soft);flex:none;margin-top:7px}
-  .facts .note{margin:10px 0 2px;font-size:13px;color:var(--muted);line-height:1.5}
+  /* 入场动画（系统关闭动效时自动禁用） */
+  .fade{opacity:0;transform:translateY(10px);animation:up .6s ease forwards}
+  .fade:nth-child(2){animation-delay:.08s}.fade:nth-child(3){animation-delay:.16s}.fade:nth-child(4){animation-delay:.24s}.fade:nth-child(5){animation-delay:.32s}.fade:nth-child(6){animation-delay:.4s}
+  @keyframes up{to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion: reduce){ .fade{animation:none;opacity:1;transform:none} }
 
-  /* ===== 栏目：一行一个 ===== */
-  .sections{padding:56px 0 24px}
-  .sections .label{display:flex;align-items:baseline;justify-content:space-between;margin:0 0 10px}
-  .sections .label .zh{font-family:var(--sans);text-transform:none;letter-spacing:.06em;font-size:13px}
-  .rows{border-top:1px solid var(--line-2)}
-  .row-item{display:grid;grid-template-columns:72px 280px minmax(0,1fr) 170px;gap:24px;align-items:start;padding:28px 0;border-bottom:1px solid var(--line);scroll-margin-top:80px;
-            transition:background .15s ease}
-  .row-item:hover{background:linear-gradient(90deg,var(--accent-soft),transparent 70%)}
-  .row-item .num{font-family:var(--mono);font-size:13px;color:var(--muted);letter-spacing:.08em;padding-top:4px}
-  .row-item h3{margin:0;font-size:21px;letter-spacing:-.01em;line-height:1.25}
-  .row-item .zh{color:var(--muted);font-size:14px;margin:4px 0 0;letter-spacing:.06em}
-  .row-item .body{color:var(--muted);font-size:15.5px;line-height:1.6;padding-top:2px}
-  .row-item .body b{color:var(--fg);font-weight:600}
-  .row-item .status{justify-self:end;font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
-                    color:var(--muted);border:1px solid var(--line-2);border-radius:999px;padding:5px 11px;white-space:nowrap;margin-top:2px}
-  .row-item .status.hot{color:var(--accent-2);border-color:var(--accent-2);background:var(--accent-2-soft)}
-  @media (max-width:900px){
-    .row-item{grid-template-columns:56px 1fr;gap:12px 16px;padding:22px 0}
-    .row-item .num{grid-row:1}
-    .row-item .title{grid-column:2}
-    .row-item .body{grid-column:2}
-    .row-item .status{grid-column:2;justify-self:start}
-  }
+  /* ===== 栏目卡片 ===== */
+  .sections{padding:56px 0 72px}
+  .sections h2{font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:0 0 20px}
+  .grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+  .card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:var(--shadow);transition:transform .2s ease,box-shadow .2s ease;scroll-margin-top:84px}
+  .card:hover{transform:translateY(-2px);box-shadow:0 1px 2px rgba(16,24,40,.06),0 16px 32px -16px rgba(16,24,40,.22)}
+  .card .icon{width:44px;height:44px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+  .card .icon svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .card h3{margin:0;font-size:19px;letter-spacing:-.01em}
+  .card .cn{color:var(--muted);font-size:14px;margin:2px 0 14px}
+  .chip{display:inline-block;font-size:12.5px;font-weight:600;padding:3px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent);margin-bottom:12px}
+  .chip.amber{background:var(--accent-2-soft);color:var(--accent-2)}
+  .card p{margin:0;color:var(--muted);font-size:15px}
+  .card p b{color:var(--fg);font-weight:600}
+  @media (min-width:900px){ .card.wide{grid-column:span 2} }
 
-  footer{padding:32px 0 44px;color:var(--muted);font-size:14px;border-top:1px solid var(--line);margin-top:40px}
-  footer .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  /* ===== 页脚 ===== */
+  footer{border-top:1px solid var(--line);padding:32px 0 40px;color:var(--muted);font-size:14px}
+  footer .row{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:space-between}
   footer .brand{font-size:15px}
-  footer .brand svg{width:22px;height:22px}
 </style>
 </head>
 <body>
@@ -103,13 +98,7 @@
   <div class="wrap">
     <nav>
       <a class="brand" href="#top" aria-label="HEAR Lab home">
-        <!-- logo：三段弧线组成的闭环（感知 → 理解 → 适应），两段蓝、一段琥珀（对应 HEAR 里的 R） -->
-        <svg viewBox="0 0 64 64" aria-hidden="true">
-          <g fill="none" stroke-width="9" stroke-linecap="round" transform="rotate(-90 32 32)">
-            <circle cx="32" cy="32" r="22" stroke="var(--accent)" pathLength="360" stroke-dasharray="92 28"/>
-            <circle cx="32" cy="32" r="22" stroke="var(--accent-2)" pathLength="360" stroke-dasharray="92 268" stroke-dashoffset="-240"/>
-          </g>
-        </svg>
+        <svg class="logo" viewBox="0 0 64 64" aria-hidden="true"><path class="t" d="M32 10A22 22 0 0 1 53.996 32.442"/><path class="t" d="M51.053 43A22 22 0 0 1 20.619 50.827"/><path class="a" d="M12.947 43A22 22 0 0 1 21.385 12.73"/></svg>
         <span>HEA<span class="r">R</span> Lab</span>
       </a>
       <ul>
@@ -123,73 +112,78 @@
   </div>
 </header>
 
-<!-- ============ 首屏 ============ -->
 <main id="top">
-<div class="hero">
-  <div class="wrap cols">
-    <div>
-      <div class="marker" aria-hidden="true"></div>
-      <p class="kicker"><span class="hl">H</span>uman-centered <span class="hl">E</span>mbodied <span class="hl">A</span>gent Inte<span class="hl">R</span>action Lab</p>
-      <h1>HEA<span class="r">R</span> Lab</h1>
-      <p class="zh">人本具身交互实验室</p>
-      <p class="lead">We study how people and embodied agents — robots, virtual agents, and AI systems with a body — can understand each other and keep adapting to one another, so that collaboration is transparent, aligned, and trustworthy in real-world settings.</p>
+<!-- ============ 首屏 ============ -->
+<section class="hero">
+  <!-- 装饰：三层弧线构成的闭环 -->
+  <svg class="ring" viewBox="0 0 200 200" aria-hidden="true">
+    <circle cx="100" cy="100" r="78" fill="none" stroke="var(--accent)" stroke-opacity=".16" stroke-width="14" stroke-dasharray="140 24" stroke-linecap="round"/>
+    <circle cx="100" cy="100" r="52" fill="none" stroke="var(--accent-2)" stroke-opacity=".22" stroke-width="10" stroke-dasharray="92 18" stroke-linecap="round" transform="rotate(40 100 100)"/>
+    <circle cx="100" cy="100" r="28" fill="none" stroke="var(--accent)" stroke-opacity=".28" stroke-width="8" stroke-dasharray="48 11" stroke-linecap="round" transform="rotate(-70 100 100)"/>
+  </svg>
+  <div class="wrap">
+    <div class="inner">
+      <p class="kicker fade"><span class="hl">H</span>uman-centered <span class="hl">E</span>mbodied <span class="hl">A</span>gent Inte<span class="hl">R</span>action Lab</p>
+      <h1 class="fade">HEA<span class="r">R</span> Lab</h1>
+      <p class="zh fade">人本具身交互实验室</p>
+      <p class="lead fade">We study how people and embodied agents — robots, virtual agents, and AI systems with a body — can understand each other and keep adapting to one another, so that collaboration is transparent, aligned, and trustworthy in real-world settings.</p>
+      <div class="meta fade">
+        <span>Shien-Ming Wu School of Intelligent Engineering</span>
+        <span>South China University of Technology · Guangzhou</span>
+      </div>
+      <div class="status fade">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Opening 2027 · 实验室筹建中 <small>&nbsp;·&nbsp; 网站内容陆续更新</small></span> <!-- 改这里：启动时间 -->
+      </div>
     </div>
-
-    <!-- 右侧信息卡：改学院/校区/状态都在这里 -->
-    <aside class="facts" aria-label="Lab facts">
-      <dl>
-        <div class="row"><dt>School</dt><dd>Shien-Ming Wu School of Intelligent Engineering<span class="zh">吴贤铭智能工程学院</span></dd></div>
-        <div class="row"><dt>University</dt><dd>South China University of Technology<span class="zh">华南理工大学</span></dd></div>
-        <div class="row"><dt>Campus</dt><dd>Guangzhou International Campus<span class="zh">广州国际校区 · 番禺</span></dd></div>
-        <div class="row"><dt>Status</dt><dd><span class="status"><span class="dot" aria-hidden="true"></span>Opening 2027 · 实验室筹建中</span></dd></div> <!-- 改这里：启动时间 -->
-        <div class="row"><dt>Web</dt><dd><a href="https://github.com/hearlab">github.com/hearlab</a></dd></div>
-      </dl>
-      <p class="note">This site is a placeholder; full content will follow. 网站内容陆续更新。</p>
-    </aside>
   </div>
-</div>
+</section>
 
-<!-- ============ 栏目（目前均为占位，正式内容后续填写） ============ -->
+<!-- ============ 栏目（目前为占位） ============ -->
 <section class="sections">
   <div class="wrap">
-    <div class="label"><span class="mono">Overview</span><span class="mono zh">栏目</span></div>
-    <div class="rows">
+    <h2>Overview · 栏目</h2>
+    <div class="grid">
 
-      <article class="row-item" id="research">
-        <span class="num">01</span>
-        <div class="title"><h3>Research</h3><p class="zh">研究方向</p></div>
-        <p class="body">Human-centered interaction with embodied agents and robots. 详细方向介绍筹备中。</p>
-        <span class="status">Coming soon</span>
+      <article class="card" id="research">
+        <div class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6M10 3v6l-5.5 9.5A1.5 1.5 0 0 0 5.8 21h12.4a1.5 1.5 0 0 0 1.3-2.5L14 9V3"/><path d="M7.5 15h9"/></svg></div>
+        <h3>Research</h3>
+        <p class="cn">研究方向</p>
+        <span class="chip">Coming soon</span>
+        <p><b>Human-centered interaction with embodied agents and robots.</b> 详细方向介绍筹备中。</p>
       </article>
 
-      <article class="row-item" id="people">
-        <span class="num">02</span>
-        <div class="title"><h3>People</h3><p class="zh">团队成员</p></div>
-        <p class="body">The founding team will be introduced here. 团队信息待公布。</p>
-        <span class="status">To be announced</span>
+      <article class="card" id="people">
+        <div class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M21 19c0-2.6-1.8-4.7-4.2-5"/></svg></div>
+        <h3>People</h3>
+        <p class="cn">团队成员</p>
+        <span class="chip">To be announced</span>
+        <p><b>The founding team will be introduced here.</b> 团队信息待公布。</p>
       </article>
 
-      <article class="row-item" id="publications">
-        <span class="num">03</span>
-        <div class="title"><h3>Publications</h3><p class="zh">论文成果</p></div>
-        <p class="body">论文列表筹备中。</p>
-        <span class="status">Coming soon</span>
+      <article class="card" id="publications">
+        <div class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></div>
+        <h3>Publications</h3>
+        <p class="cn">论文成果</p>
+        <span class="chip">Coming soon</span>
+        <p><b>Selected and full publication lists.</b> 论文列表筹备中。</p>
       </article>
 
-      <article class="row-item" id="join">
-        <span class="num">04</span>
-        <div class="title"><h3>Join us</h3><p class="zh">招生信息</p></div>
-        <p class="body"><b>PhD and master's students, postdocs, research assistants, and interns.</b> Details to follow. 2027 年起招收博士生、硕士生、博士后、科研助理与实习生，详情后续公布。</p>
-        <span class="status hot">Recruiting 2027</span>
+      <article class="card" id="join">
+        <div class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg></div>
+        <h3>Join us</h3>
+        <p class="cn">招生信息</p>
+        <span class="chip amber">Recruiting from 2027</span>
+        <p><b>PhD and master's students, postdocs, research assistants, and interns.</b> 2027 年起招收博士生、硕士生、博士后、科研助理与实习生，详情后续公布。</p>
       </article>
 
-      <article class="row-item" id="contact">
-        <span class="num">05</span>
-        <div class="title"><h3>Contact</h3><p class="zh">联系方式</p></div>
-        <p class="body">HEAR Lab · Shien-Ming Wu School of Intelligent Engineering<br>
+      <article class="card wide" id="contact">
+        <div class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 0 1 12 0c0 4.7-6 10-6 10z"/><circle cx="12" cy="11" r="2"/></svg></div>
+        <h3>Contact</h3>
+        <p class="cn">联系方式</p>
+        <p><b>HEAR Lab · Shien-Ming Wu School of Intelligent Engineering</b><br>
         South China University of Technology, Guangzhou International Campus, Panyu District, Guangzhou<br>
         GitHub: <a href="https://github.com/hearlab">github.com/hearlab</a></p> <!-- 改这里：邮箱 -->
-        <span class="status">Email soon</span>
       </article>
 
     </div>
@@ -199,16 +193,10 @@
 
 <footer>
   <div class="wrap">
-    <span class="brand">
-      <svg viewBox="0 0 64 64" aria-hidden="true">
-        <g fill="none" stroke-width="9" stroke-linecap="round" transform="rotate(-90 32 32)">
-          <circle cx="32" cy="32" r="22" stroke="var(--accent)" pathLength="360" stroke-dasharray="92 28"/>
-          <circle cx="32" cy="32" r="22" stroke="var(--accent-2)" pathLength="360" stroke-dasharray="92 268" stroke-dashoffset="-240"/>
-        </g>
-      </svg>
-      <span>HEA<span class="r">R</span> Lab</span>
-    </span>
-    <span>© 2026 HEAR Lab · South China University of Technology</span>
+    <div class="row">
+      <a class="brand" href="#top"><svg class="logo" viewBox="0 0 64 64" aria-hidden="true"><path class="t" d="M32 10A22 22 0 0 1 53.996 32.442"/><path class="t" d="M51.053 43A22 22 0 0 1 20.619 50.827"/><path class="a" d="M12.947 43A22 22 0 0 1 21.385 12.73"/></svg><span>HEA<span class="r">R</span> Lab · 人本具身交互实验室</span></a>
+      <span>© 2026 HEAR Lab · South China University of Technology</span>
+    </div>
   </div>
 </footer>
 
