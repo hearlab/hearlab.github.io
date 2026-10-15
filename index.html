@@ -55,9 +55,9 @@
   h1 .r{color:var(--accent-2)}
   .zh{font-size:clamp(20px,3vw,28px);color:var(--muted);margin:0 0 26px;font-weight:500;letter-spacing:.06em}
   .lead{font-size:18.5px;line-height:1.7;max-width:640px;margin:0 0 28px}
-  .meta{display:flex;flex-wrap:wrap;gap:8px 22px;color:var(--muted);font-size:15px;margin:0 0 30px}
-  .meta span{display:inline-flex;align-items:center;gap:8px}
-  .meta span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  .meta{display:flex;flex-direction:column;align-items:flex-start;gap:6px;color:var(--muted);font-size:15px;margin:0 0 30px}
+  .meta span{display:inline-flex;align-items:flex-start;gap:8px}
+  .meta span::before{content:"";flex:none;width:6px;height:6px;margin-top:calc(.825em - 3px);border-radius:50%;background:var(--accent)}
   .status{display:inline-flex;align-items:center;gap:10px;padding:10px 16px 10px 12px;border-radius:999px;background:var(--accent-2-soft);color:var(--fg);font-weight:600;border:1px solid color-mix(in srgb,var(--accent-2) 35%,transparent)}
   .status .dot{width:10px;height:10px;border-radius:50%;background:var(--accent-2);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent-2) 25%,transparent)}
   .status small{font-weight:400;color:var(--muted)}
@@ -69,21 +69,23 @@
   @keyframes up{to{opacity:1;transform:none}}
   @media (prefers-reduced-motion: reduce){ .fade{animation:none;opacity:1;transform:none} }
 
-  /* ===== 栏目卡片 ===== */
+  /* ===== 板块：每个板块单独一行，左边图标，右边标题和内容 ===== */
   .sections{padding:56px 0 72px}
   .sections h2{font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:0 0 20px}
-  .grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
-  .card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:var(--shadow);transition:transform .2s ease,box-shadow .2s ease;scroll-margin-top:84px}
+  .grid{display:flex;flex-direction:column;gap:16px}
+  .card{position:relative;display:flex;align-items:flex-start;gap:20px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;box-shadow:var(--shadow);transition:transform .2s ease,box-shadow .2s ease;scroll-margin-top:84px}
   .card:hover{transform:translateY(-2px);box-shadow:0 1px 2px rgba(16,24,40,.06),0 16px 32px -16px rgba(16,24,40,.22)}
-  .card .icon{width:44px;height:44px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+  .card .icon{flex:none;width:44px;height:44px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center}
   .card .icon svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .card .content{flex:1;min-width:0}
+  .card .head{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;min-height:44px;margin-bottom:6px}
   .card h3{margin:0;font-size:19px;letter-spacing:-.01em}
-  .card .cn{color:var(--muted);font-size:14px;margin:2px 0 14px}
-  .chip{display:inline-block;font-size:12.5px;font-weight:600;padding:3px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent);margin-bottom:12px}
+  .card .cn{color:var(--muted);font-size:14px}
+  .chip{display:inline-block;font-size:12.5px;font-weight:600;padding:3px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent);margin-left:auto}
   .chip.amber{background:var(--accent-2-soft);color:var(--accent-2)}
   .card p{margin:0;color:var(--muted);font-size:15px}
   .card p b{color:var(--fg);font-weight:600}
-  @media (min-width:900px){ .card.wide{grid-column:span 2} }
+  @media (max-width:600px){ .card{flex-direction:column;gap:14px} .card .head{min-height:0} .chip{margin-left:0} }
 
   /* ===== 页脚 ===== */
   footer{border-top:1px solid var(--line);padding:32px 0 40px;color:var(--muted);font-size:14px}
@@ -129,7 +131,7 @@
       <p class="lead fade">We study how people and embodied agents — robots, virtual agents, and AI systems with a body — can understand each other and keep adapting to one another, so that collaboration is transparent, aligned, and trustworthy in real-world settings.</p>
       <div class="meta fade">
         <span>Shien-Ming Wu School of Intelligent Engineering</span>
-        <span>South China University of Technology · Guangzhou</span>
+        <span>South China University of Technology · Guangzhou International Campus</span>
       </div>
       <div class="status fade">
         <span class="dot" aria-hidden="true"></span>
@@ -142,48 +144,49 @@
 <!-- ============ 栏目（目前为占位） ============ -->
 <section class="sections">
   <div class="wrap">
-    <h2>Overview · 栏目</h2>
+    <h2>Overview</h2>
     <div class="grid">
 
       <article class="card" id="research">
         <div class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6M10 3v6l-5.5 9.5A1.5 1.5 0 0 0 5.8 21h12.4a1.5 1.5 0 0 0 1.3-2.5L14 9V3"/><path d="M7.5 15h9"/></svg></div>
-        <h3>Research</h3>
-        <p class="cn">研究方向</p>
-        <span class="chip">Coming soon</span>
-        <p><b>Human-centered interaction with embodied agents and robots.</b> 详细方向介绍筹备中。</p>
+        <div class="content">
+          <div class="head"><h3>Research</h3><span class="cn">研究方向</span><span class="chip">Coming soon</span></div>
+          <p><b>Human-centered interaction with embodied agents and robots.</b> 详细方向介绍筹备中。</p>
+        </div>
       </article>
 
       <article class="card" id="people">
         <div class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M21 19c0-2.6-1.8-4.7-4.2-5"/></svg></div>
-        <h3>People</h3>
-        <p class="cn">团队成员</p>
-        <span class="chip">To be announced</span>
-        <p><b>The founding team will be introduced here.</b> 团队信息待公布。</p>
+        <div class="content">
+          <div class="head"><h3>People</h3><span class="cn">团队成员</span><span class="chip">To be announced</span></div>
+          <p><b>The founding team will be introduced here.</b> 团队信息待公布。</p>
+        </div>
       </article>
 
       <article class="card" id="publications">
         <div class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></div>
-        <h3>Publications</h3>
-        <p class="cn">论文成果</p>
-        <span class="chip">Coming soon</span>
-        <p><b>Selected and full publication lists.</b> 论文列表筹备中。</p>
+        <div class="content">
+          <div class="head"><h3>Publications</h3><span class="cn">论文成果</span><span class="chip">Coming soon</span></div>
+          <p><b>Selected and full publication lists.</b> 论文列表筹备中。</p>
+        </div>
       </article>
 
       <article class="card" id="join">
         <div class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg></div>
-        <h3>Join us</h3>
-        <p class="cn">招生信息</p>
-        <span class="chip amber">Recruiting from 2027</span>
-        <p><b>PhD and master's students, postdocs, research assistants, and interns.</b> 2027 年起招收博士生、硕士生、博士后、科研助理与实习生，详情后续公布。</p>
+        <div class="content">
+          <div class="head"><h3>Join us</h3><span class="cn">招生信息</span><span class="chip amber">Recruiting from 2027</span></div>
+          <p><b>PhD and master's students, postdocs, research assistants, and interns.</b> 2027 年起招收博士生、硕士生、博士后、科研助理与实习生，详情后续公布。</p>
+        </div>
       </article>
 
-      <article class="card wide" id="contact">
+      <article class="card" id="contact">
         <div class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 0 1 12 0c0 4.7-6 10-6 10z"/><circle cx="12" cy="11" r="2"/></svg></div>
-        <h3>Contact</h3>
-        <p class="cn">联系方式</p>
-        <p><b>HEAR Lab · Shien-Ming Wu School of Intelligent Engineering</b><br>
-        South China University of Technology, Guangzhou International Campus, Panyu District, Guangzhou<br>
-        GitHub: <a href="https://github.com/hearlab">github.com/hearlab</a></p> <!-- 改这里：邮箱 -->
+        <div class="content">
+          <div class="head"><h3>Contact</h3><span class="cn">联系方式</span></div>
+          <p><b>HEAR Lab · Shien-Ming Wu School of Intelligent Engineering</b><br>
+          South China University of Technology, Guangzhou International Campus, Panyu District, Guangzhou<br>
+          GitHub: <a href="https://github.com/hearlab">github.com/hearlab</a></p> <!-- 改这里：邮箱 -->
+        </div>
       </article>
 
     </div>
